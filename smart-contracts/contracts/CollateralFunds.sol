@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract CollateralFunds is Ownable {
-    constructor() Ownable(0x9e267749E478eD528b4A1F40bD600dA5510258Dc) {
+    constructor() Ownable(0x93fC586D7F4abccC440065288CA903d234e0fe76) {
         priceFeed = AggregatorV3Interface(
             0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
         ); //  matic/usd
@@ -19,7 +19,7 @@ contract CollateralFunds is Ownable {
         return price;
     }
 
-    IERC20 usdt = IERC20(0xFA31614f5F776eDD6f72Bc00BdEb22Bd4A59A7Db); //usdt contract
+    IERC20 usdt = IERC20(0x3525b0115b3f5178D7AC14729533E902a711A049); //usdt contract
 
     mapping(address => bool) public controller;
     mapping(address => uint256) public userToPaid;
@@ -74,4 +74,4 @@ contract CollateralFunds is Ownable {
     fallback() external payable {}
 }
 
-// https://mumbai.polygonscan.com/address/0x00AB8BCeeDA89083B5b87E7FB94c6465Ac388A4f
+// https://mumbai.polygonscan.com/address/0x95dFe9A41F46A1eE001A4BeFa78F31ecaF998fbC
