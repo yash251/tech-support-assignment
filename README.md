@@ -8,3 +8,6 @@ It is an NFT utility platform where users can deposit their NFTs as a collateral
 - https://mumbai.polygonscan.com/address/0x665C36b5B8b27a138425f742D73c60Ba40d7f32d - Dao
 - https://mumbai.polygonscan.com/address/0x3525b0115b3f5178D7AC14729533E902a711A049 - USDTMinter
 - https://mumbai.polygonscan.com/address/0x4CCF5402Babc5d959fb7c4818eb9a5d9d0D52fa0 - NFTMinter
+
+# Subgraph Query URL
+- https://api.studio.thegraph.com/query/39471/en-assignment-subgraph/version/latest
