@@ -1,6 +1,10 @@
 # Project Description
 It is an NFT utility platform where users can deposit their NFTs as a collateral or stake them to yield some regular interest.
 
+# Video Demo
+- Part 1 :- https://www.loom.com/share/45c8130122744dc0aef00a109b14c9b4?sid=b9cfef58-1d17-4c64-bed1-aea149cfe4d0
+- Part 2 :- https://www.loom.com/share/892628b63ab1449180c97277e561bbac?sid=b1700d2a-9d42-4d9d-a202-8d112b9942d2
+
 # Contracts
 - https://mumbai.polygonscan.com/address/0x95dFe9A41F46A1eE001A4BeFa78F31ecaF998fbC - CollateralFunds
 - https://mumbai.polygonscan.com/address/0x89A28b23ba49a44e909b6A3333AD606ea9C9791A - Collateral
