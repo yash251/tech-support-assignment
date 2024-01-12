@@ -1,0 +1,111 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CollateralFunds
+    network: mumbai
+    source:
+      address: "0x95dFe9A41F46A1eE001A4BeFa78F31ecaF998fbC"
+      abi: CollateralFunds
+      startBlock: 44643409
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OwnershipTransferred
+      abis:
+        - name: CollateralFunds
+          file: CollateralFunds/abis/CollateralFunds.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: CollateralFunds/CollateralFunds.wasm
+  - kind: ethereum
+    name: Collateral
+    network: mumbai
+    source:
+      address: "0x89A28b23ba49a44e909b6A3333AD606ea9C9791A"
+      abi: Collateral
+      startBlock: 44643454
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - claimed
+        - staked
+        - unstaked
+      abis:
+        - name: Collateral
+          file: Collateral/abis/Collateral.json
+      eventHandlers:
+        - event: claimed(address,uint256)
+          handler: handleclaimed
+        - event: staked(address,address,uint256,uint256,uint256)
+          handler: handlestaked
+        - event: unstaked(address,address,uint256,uint256,uint256)
+          handler: handleunstaked
+      file: Collateral/Collateral.wasm
+  - kind: ethereum
+    name: Lending
+    network: mumbai
+    source:
+      address: "0x6A1A3C4eA319b4310Ed341B2406C356bF04bA5Cc"
+      abi: Lending
+      startBlock: 44643470
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LendingOwnershipTransferred
+        - Lendingclaimed
+        - Lendingstaked
+        - Lendingunstaked
+      abis:
+        - name: Lending
+          file: Lending/abis/Lending.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: claimed(address,uint256)
+          handler: handleclaimed
+        - event: staked(address,address,uint256,uint256,uint256)
+          handler: handlestaked
+        - event: unstaked(address,address,uint256,uint256,uint256)
+          handler: handleunstaked
+      file: Lending/Lending.wasm
+  - kind: ethereum
+    name: Dao
+    network: mumbai
+    source:
+      address: "0x665C36b5B8b27a138425f742D73c60Ba40d7f32d"
+      abi: Dao
+      startBlock: 44643503
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DaoOwnershipTransferred
+        - joinedDao
+        - leftDao
+        - proposalCreated
+        - proposalVoted
+      abis:
+        - name: Dao
+          file: Dao/abis/Dao.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: joinedDao(address)
+          handler: handlejoinedDao
+        - event: leftDao(address)
+          handler: handleleftDao
+        - event: proposalCreated(uint256,address)
+          handler: handleproposalCreated
+        - event: proposalVoted(uint256,address)
+          handler: handleproposalVoted
+      file: Dao/Dao.wasm

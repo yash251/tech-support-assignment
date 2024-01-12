@@ -1,0 +1,17 @@
+{
+  "mumbai": {
+    "CollateralFunds": {
+      "address": "0x95dFe9A41F46A1eE001A4BeFa78F31ecaF998fbC",
+      "startBlock": 44643409
+    },
+    "Collateral": {
+      "address": "0x89A28b23ba49a44e909b6A3333AD606ea9C9791A"
+    },
+    "Lending": {
+      "address": "0x6A1A3C4eA319b4310Ed341B2406C356bF04bA5Cc"
+    },
+    "Dao": {
+      "address": "0x665C36b5B8b27a138425f742D73c60Ba40d7f32d"
+    }
+  }
+}

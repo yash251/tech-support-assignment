@@ -1,5 +1,5 @@
 # Project Description
-It is an NFT utility platform where users can deposit their NFTs as a collateral or stake them to yield some regular interest
+It is an NFT utility platform where users can deposit their NFTs as a collateral or stake them to yield some regular interest.
 
 # Contracts
 - https://mumbai.polygonscan.com/address/0x95dFe9A41F46A1eE001A4BeFa78F31ecaF998fbC - CollateralFunds

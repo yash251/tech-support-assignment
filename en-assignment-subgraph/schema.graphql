@@ -1,0 +1,196 @@
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransaction @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! 
+  previousOwner: Bytes 
+  newOwner: Bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+enum LendingTransactionType {
+  LENDING_OWNERSHIP_TRANSFERRED
+  LENDING_CLAIMED
+  LENDING_STAKED
+  LENDING_UNSTAKED
+}
+
+type LendingTransaction @entity {
+  id: Bytes!
+  type: LendingTransactionType!
+  user: Overview!
+  contractAdd: Bytes # address
+  tokenId: BigInt # uint256
+  value: BigInt # uint256
+  _term: BigInt # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+enum TransactionType {
+  OWNERSHIP_TRANSFERRED
+  CLAIMED
+  STAKED
+  UNSTAKED
+  LENDING_OWNERSHIP_TRANSFERRED
+  LENDING_CLAIMED
+  LENDING_STAKED
+  LENDING_UNSTAKED
+  DAO_OWNERSHIP_TRANSFERRED
+  JOINED_DAO
+  LEFT_DAO
+  PROPOSAL_CREATED
+  PROPOSAL_VOTED
+}
+
+type Transaction @entity {
+  id: Bytes!
+  type: TransactionType!
+  user: Overview!
+  previousOwner: Overview!
+  newOwner: Overview!
+  contractAdd: Bytes # address
+  tokenId: BigInt # uint256
+  amount: BigInt # uint256
+  _term: BigInt # uint256
+  proposalId: BigInt # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+# Reverse Lookups
+type Overview @entity(immutable: true) {
+  id: Bytes!
+  transactionsAsPreviousOwner: [Transaction!]! @derivedFrom(field: "previousOwner")
+  transactionsAsNewOwner: [Transaction!]! @derivedFrom(field: "newOwner")
+  lendingTransactionsForUser: [Transaction!]! @derivedFrom(field: "user")
+  daoTransactionsForUser: [Transaction!]! @derivedFrom(field: "user")
+  lendingTransactionsForUser: [LendingTransaction!]! @derivedFrom(field: "user")
+}
+
+type claimed @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type staked @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  contractAdd: Bytes! # address
+  tokenId: BigInt! # uint256
+  value: BigInt! # uint256
+  _term: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type unstaked @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  contractAdd: Bytes! # address
+  tokenId: BigInt! # uint256
+  value: BigInt! # uint256
+  _term: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type LendingOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Lendingclaimed @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Lendingstaked @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  contractAdd: Bytes! # address
+  tokenId: BigInt! # uint256
+  value: BigInt! # uint256
+  _term: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Lendingunstaked @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  contractAdd: Bytes! # address
+  tokenId: BigInt! # uint256
+  value: BigInt! # uint256
+  _term: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type DaoOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type joinedDao @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type leftDao @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type proposalCreated @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type proposalVoted @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
